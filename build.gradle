@@ -78,18 +78,18 @@ project(":spring-kotlin-coroutine") {
     }
 
     bintray {
-        user = "konrad-kaminski"
+        user = "0mok"
         key = System.getenv('BINTRAY_KEY')
         dryRun = false
         publish = true
         publications = ['Bintray']
         pkg {
-            repo = 'maven'
+            repo = 'spring-kotlin-coroutine'
             name = 'spring-kotlin-coroutine'
             licenses = ['Apache-2.0']
-            vcsUrl = 'git@github.com:konrad-kaminski/spring-kotlin-coroutine.git'
-            websiteUrl = 'https://github.com/konrad-kaminski/spring-kotlin-coroutine'
-            issueTrackerUrl = 'https://github.com/konrad-kaminski/spring-kotlin-coroutine/issues'
+            vcsUrl = 'git@github.com:0mok/spring-kotlin-coroutine.git'
+            websiteUrl = 'https://github.com/0mok/spring-kotlin-coroutine'
+            issueTrackerUrl = 'https://github.com/0mok/spring-kotlin-coroutine/issues'
             labels = ['spring', 'kotlin', 'coroutine']
             version {
                 name = project.version
@@ -179,18 +179,18 @@ project(":spring-webmvc-kotlin-coroutine") {
     }
 
     bintray {
-        user = "konrad-kaminski"
+        user = "0mok"
         key = System.getenv('BINTRAY_KEY')
         dryRun = false
         publish = true
         publications = ['Bintray']
         pkg {
-            repo = 'maven'
+            repo = 'spring-kotlin-coroutine'
             name = 'spring-webmvc-kotlin-coroutine'
             licenses = ['Apache-2.0']
-            vcsUrl = 'git@github.com:konrad-kaminski/spring-kotlin-coroutine.git'
-            websiteUrl = 'https://github.com/konrad-kaminski/spring-kotlin-coroutine'
-            issueTrackerUrl = 'https://github.com/konrad-kaminski/spring-kotlin-coroutine/issues'
+            vcsUrl = 'git@github.com:0mok/spring-kotlin-coroutine.git'
+            websiteUrl = 'https://github.com/0mok/spring-kotlin-coroutine'
+            issueTrackerUrl = 'https://github.com/0mok/spring-kotlin-coroutine/issues'
             labels = ['spring', 'kotlin', 'coroutine']
             version {
                 name = project.version
@@ -283,18 +283,18 @@ project(":spring-webflux-kotlin-coroutine") {
     }
 
     bintray {
-        user = "konrad-kaminski"
+        user = "0mok"
         key = System.getenv('BINTRAY_KEY')
         dryRun = false
         publish = true
         publications = ['Bintray']
         pkg {
-            repo = 'maven'
+            repo = 'spring-kotlin-coroutine'
             name = 'spring-webflux-kotlin-coroutine'
             licenses = ['Apache-2.0']
-            vcsUrl = 'git@github.com:konrad-kaminski/spring-kotlin-coroutine.git'
-            websiteUrl = 'https://github.com/konrad-kaminski/spring-kotlin-coroutine'
-            issueTrackerUrl = 'https://github.com/konrad-kaminski/spring-kotlin-coroutine/issues'
+            vcsUrl = 'git@github.com:0mok/spring-kotlin-coroutine.git'
+            websiteUrl = 'https://github.com/0mok/spring-kotlin-coroutine'
+            issueTrackerUrl = 'https://github.com/0mok/spring-kotlin-coroutine/issues'
             labels = ['spring', 'kotlin', 'coroutine']
             version {
                 name = project.version
@@ -379,18 +379,18 @@ project("spring-data-mongodb-kotlin-coroutine") {
     }
 
     bintray {
-        user = "konrad-kaminski"
+        user = "0mok"
         key = System.getenv('BINTRAY_KEY')
         dryRun = false
         publish = true
         publications = ['Bintray']
         pkg {
-            repo = 'maven'
+            repo = 'spring-kotlin-coroutine'
             name = 'spring-data-mongodb-kotlin-coroutine'
             licenses = ['Apache-2.0']
-            vcsUrl = 'git@github.com:konrad-kaminski/spring-kotlin-coroutine.git'
-            websiteUrl = 'https://github.com/konrad-kaminski/spring-kotlin-coroutine'
-            issueTrackerUrl = 'https://github.com/konrad-kaminski/spring-kotlin-coroutine/issues'
+            vcsUrl = 'git@github.com:0mok/spring-kotlin-coroutine.git'
+            websiteUrl = 'https://github.com/0mok/spring-kotlin-coroutine'
+            issueTrackerUrl = 'https://github.com/0mok/spring-kotlin-coroutine/issues'
             labels = ['spring', 'kotlin', 'coroutine']
             version {
                 name = project.version
@@ -480,18 +480,18 @@ project("spring-boot-autoconfigure-kotlin-coroutine") {
     }
 
     bintray {
-        user = "konrad-kaminski"
+        user = "0mok"
         key = System.getenv('BINTRAY_KEY')
         dryRun = false
         publish = true
         publications = ['Bintray']
         pkg {
-            repo = 'maven'
+            repo = 'spring-kotlin-coroutine'
             name = 'spring-boot-autoconfigure-kotlin-coroutine'
             licenses = ['Apache-2.0']
-            vcsUrl = 'git@github.com:konrad-kaminski/spring-kotlin-coroutine.git'
-            websiteUrl = 'https://github.com/konrad-kaminski/spring-kotlin-coroutine'
-            issueTrackerUrl = 'https://github.com/konrad-kaminski/spring-kotlin-coroutine/issues'
+            vcsUrl = 'git@github.com:0mok/spring-kotlin-coroutine.git'
+            websiteUrl = 'https://github.com/0mok/spring-kotlin-coroutine'
+            issueTrackerUrl = 'https://github.com/0mok/spring-kotlin-coroutine/issues'
             labels = ['spring', 'kotlin', 'coroutine']
             version {
                 name = project.version
