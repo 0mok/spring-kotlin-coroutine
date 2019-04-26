@@ -176,8 +176,7 @@ data class ScheduledCoroutine(
         val invocableMethod: Method,
         val policy: SchedulingPolicy
 ) {
-    suspend fun run(): Unit = suspendAtomicCancellableCoroutine(true) { continuation ->
-        continuation.initCancellability()
+    suspend fun run(): Unit = suspendAtomicCancellableCoroutine { continuation ->
         try {
             invocableMethod.invoke(bean, continuation)
         } catch (e: InvocationTargetException) {
@@ -202,7 +201,7 @@ private fun CoroutineContext.asScheduledCoroutineExceptionHandler(): ScheduledCo
             is TaskSchedulerDispatcher -> { _, exception, _ ->
                 TaskUtils.getDefaultErrorHandler(true).handleError(exception)
             }
-            else                       -> ::handleCoroutineException
+            else                       -> { context, exception, _ -> handleCoroutineException(context, exception) }
         }
 
 private fun ScheduledAnnotationBeanPostProcessor.getRegistrarTaskScheduler(): TaskScheduler =

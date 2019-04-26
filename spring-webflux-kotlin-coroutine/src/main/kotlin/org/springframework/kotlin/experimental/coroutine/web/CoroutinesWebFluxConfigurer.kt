@@ -26,6 +26,7 @@ import org.springframework.context.event.ContextRefreshedEvent
 import org.springframework.context.event.EventListener
 import org.springframework.core.MethodParameter
 import org.springframework.kotlin.experimental.coroutine.isSuspend
+import org.springframework.stereotype.Component
 import org.springframework.web.reactive.BindingContext
 import org.springframework.web.reactive.config.WebFluxConfigurer
 import org.springframework.web.reactive.result.method.HandlerMethodArgumentResolver
@@ -40,6 +41,7 @@ import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
+@Component
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
 open class CoroutinesWebFluxConfigurer(
     private val applicationContext: ApplicationContext
