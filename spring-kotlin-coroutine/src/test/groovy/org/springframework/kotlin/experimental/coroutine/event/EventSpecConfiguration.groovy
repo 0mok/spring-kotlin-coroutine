@@ -18,6 +18,7 @@ package org.springframework.kotlin.experimental.coroutine.event
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.event.EventListener
+import org.springframework.stereotype.Component
 
 import java.util.function.Function
 
@@ -33,6 +34,7 @@ class EventSpecConfiguration {
     }
 }
 
+@Component
 class RegularListener {
     private def events = new Stack<Object>()
     private def testEvents = new Stack<Object>()

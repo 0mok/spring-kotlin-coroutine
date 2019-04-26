@@ -20,13 +20,13 @@ import org.slf4j.LoggerFactory
 import org.springframework.data.mongodb.core.CoroutineMongoOperations
 import org.springframework.data.mongodb.core.query.BasicQuery
 import org.springframework.data.mongodb.core.query.Query
-import org.springframework.data.repository.query.EvaluationContextProvider
+import org.springframework.data.repository.query.QueryMethodEvaluationContextProvider
 import org.springframework.expression.spel.standard.SpelExpressionParser
 import java.util.ArrayList
 
 open class CoroutineStringBasedMongoQuery(
         query: String, method: CoroutineMongoQueryMethod, operations: CoroutineMongoOperations,
-        expressionParser: SpelExpressionParser, evaluationContextProvider: EvaluationContextProvider
+        expressionParser: SpelExpressionParser, evaluationContextProvider: QueryMethodEvaluationContextProvider
 ): AbstractCoroutineMongoQuery(method, operations) {
 
     private val COUND_AND_DELETE = "Manually defined query for %s cannot be both a count and delete query at the same time!"
@@ -42,7 +42,7 @@ open class CoroutineStringBasedMongoQuery(
     private val parameterBinder: ExpressionEvaluatingParameterBinder
 
     constructor(method: CoroutineMongoQueryMethod, operations: CoroutineMongoOperations,
-                expressionParser: SpelExpressionParser, evaluationContextProvider: EvaluationContextProvider):
+                expressionParser: SpelExpressionParser, evaluationContextProvider: QueryMethodEvaluationContextProvider):
             this(method.annotatedQuery, method, operations, expressionParser, evaluationContextProvider)
 
     init {

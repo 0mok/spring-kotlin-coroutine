@@ -30,7 +30,7 @@ import org.springframework.data.repository.core.NamedQueries
 import org.springframework.data.repository.core.RepositoryInformation
 import org.springframework.data.repository.core.RepositoryMetadata
 import org.springframework.data.repository.core.support.MethodInvocationValidator
-import org.springframework.data.repository.query.EvaluationContextProvider
+import org.springframework.data.repository.query.QueryMethodEvaluationContextProvider
 import org.springframework.data.repository.query.QueryLookupStrategy
 import org.springframework.data.repository.query.RepositoryQuery
 import org.springframework.expression.spel.standard.SpelExpressionParser
@@ -74,7 +74,7 @@ open class CoroutineMongoRepositoryFactory(
 	 * @see org.springframework.data.repository.core.support.RepositoryFactorySupport#getQueryLookupStrategy(org.springframework.data.repository.query.QueryLookupStrategy.Key, org.springframework.data.repository.query.EvaluationContextProvider)
 	 */
     override fun getQueryLookupStrategy(key: QueryLookupStrategy.Key,
-                                        evaluationContextProvider: EvaluationContextProvider): Optional<QueryLookupStrategy> =
+                                        evaluationContextProvider: QueryMethodEvaluationContextProvider): Optional<QueryLookupStrategy> =
         Optional.of(MongoQueryLookupStrategy(operations, evaluationContextProvider, mappingContext))
 
     /*
@@ -101,7 +101,7 @@ open class CoroutineMongoRepositoryFactory(
      */
     private class MongoQueryLookupStrategy(
             private val operations: CoroutineMongoOperations,
-            private val evaluationContextProvider: EvaluationContextProvider,
+            private val evaluationContextProvider: QueryMethodEvaluationContextProvider,
             private val mappingContext: MappingContext<out MongoPersistentEntity<*>, MongoPersistentProperty>
     ) : QueryLookupStrategy {
 
