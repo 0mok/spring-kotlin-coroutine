@@ -2,9 +2,9 @@ buildscript {
     ext.kotlin_version = "1.3.0"
     ext.kotlin_coroutines_version = "1.0.1"
     ext.spock_version = '1.1-groovy-2.4'
-    ext.spring_version = "5.0.9.RELEASE"
-    ext.spring_data_version = "2.0.10.RELEASE"
-    ext.spring_boot_version = "2.0.5.RELEASE"
+    ext.spring_version = "5.1.2.RELEASE"
+    ext.spring_data_version = "2.1.2.RELEASE"
+    ext.spring_boot_version = "2.1.0.RELEASE"
 
     repositories {
         jcenter()
@@ -26,6 +26,7 @@ buildscript {
 subprojects {
     apply plugin: "java"
     apply plugin: "kotlin"
+    apply plugin: "io.spring.dependency-management"
 
     compileJava {
         sourceCompatibility = "1.8"
@@ -40,6 +41,21 @@ subprojects {
         mavenCentral()
         maven {
             url "https://repo.spring.io/milestone"
+        }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:$spring_boot_version"
+//            mavenBom "org.springframework:spring-framework-bom:${sprintFrameworkVersion}"
+//            mavenBom "org.springframework.security:spring-security-bom:${sprintSecurityVersion}"
+        }
+
+        dependencies {
+            dependency("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
+            dependency("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version")
+            dependency("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
+            dependency("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
         }
     }
 
@@ -61,20 +77,20 @@ project(":spring-kotlin-coroutine") {
     compileTestGroovy.classpath += files(compileTestKotlin.destinationDir)
 
     dependencies {
-        compile "org.springframework:spring-context-support:$spring_version"
-        compile "org.springframework:spring-web:$spring_version", optional
+        compile "org.springframework:spring-context-support"
+        compile "org.springframework:spring-web", optional
         compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
         compile "org.jetbrains.kotlinx:kotlinx-coroutines-reactor:$kotlin_coroutines_version", optional
         compile "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$kotlin_coroutines_version", optional
-        compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+        compile "org.jetbrains.kotlin:kotlin-reflect"
 
         testCompile project(':spring-kotlin-coroutine-test')
         testCompile "net.sf.ehcache:ehcache:2.10.3"
         testCompile "org.spockframework:spock-core:$spock_version"
         testCompile "org.spockframework:spock-spring:$spock_version"
-        testCompile "org.springframework.boot:spring-boot-autoconfigure:$spring_boot_version"
-        testCompile "org.springframework.boot:spring-boot-starter-test:$spring_boot_version"
-        testCompile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
+        testCompile "org.springframework.boot:spring-boot-autoconfigure"
+        testCompile "org.springframework.boot:spring-boot-starter-test"
+        testCompile "org.springframework.boot:spring-boot-starter-web"
     }
 
     bintray {
@@ -169,13 +185,13 @@ project(":spring-webmvc-kotlin-coroutine") {
 
     dependencies {
         compile project(":spring-kotlin-coroutine")
-        compile "org.springframework:spring-webmvc:$spring_version"
+        compile "org.springframework:spring-webmvc"
 
         testCompile "org.spockframework:spock-core:$spock_version"
         testCompile "org.spockframework:spock-spring:$spock_version"
-        testCompile "org.springframework.boot:spring-boot-autoconfigure:$spring_boot_version"
-        testCompile "org.springframework.boot:spring-boot-starter-test:$spring_boot_version"
-        testCompile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
+        testCompile "org.springframework.boot:spring-boot-autoconfigure"
+        testCompile "org.springframework.boot:spring-boot-starter-test"
+        testCompile "org.springframework.boot:spring-boot-starter-web"
     }
 
     bintray {
@@ -270,16 +286,16 @@ project(":spring-webflux-kotlin-coroutine") {
 
     dependencies {
         compile project(":spring-kotlin-coroutine")
-        compile "org.springframework:spring-webflux:$spring_version"
+        compile "org.springframework:spring-webflux"
 
         testCompile project(":spring-kotlin-coroutine-test")
         testCompile "org.spockframework:spock-core:$spock_version"
         testCompile "org.spockframework:spock-spring:$spock_version"
-        testCompile "org.springframework.boot:spring-boot-autoconfigure:$spring_boot_version"
-        testCompile "org.springframework.boot:spring-boot-starter-test:$spring_boot_version"
-        testCompile "org.springframework.boot:spring-boot-starter-webflux:$spring_boot_version"
-        testCompile "org.springframework.boot:spring-boot-starter-mustache:$spring_boot_version"
-        testCompile "de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.0.0"
+        testCompile "org.springframework.boot:spring-boot-autoconfigure"
+        testCompile "org.springframework.boot:spring-boot-starter-test"
+        testCompile "org.springframework.boot:spring-boot-starter-webflux"
+        testCompile "org.springframework.boot:spring-boot-starter-mustache"
+        testCompile "de.flapdoodle.embed:de.flapdoodle.embed.mongo"
     }
 
     bintray {
@@ -374,7 +390,7 @@ project("spring-data-mongodb-kotlin-coroutine") {
 
     dependencies {
         compile project(":spring-kotlin-coroutine")
-        compile "org.springframework.data:spring-data-mongodb:$spring_data_version"
+        compile "org.springframework.data:spring-data-mongodb"
         compile "org.mongodb:mongodb-driver-reactivestreams:1.6.0"
     }
 
@@ -470,13 +486,13 @@ project("spring-boot-autoconfigure-kotlin-coroutine") {
 
     dependencies {
         compile project(":spring-data-mongodb-kotlin-coroutine"), optional
-        compile "org.springframework.boot:spring-boot-autoconfigure:$spring_boot_version"
+        compile "org.springframework.boot:spring-boot-autoconfigure"
 
         testCompile project(':spring-kotlin-coroutine-test')
         testCompile "org.spockframework:spock-core:$spock_version"
         testCompile "org.spockframework:spock-spring:$spock_version"
-        testCompile "org.springframework.boot:spring-boot-starter-test:$spring_boot_version"
-        testCompile "de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.0.0"
+        testCompile "org.springframework.boot:spring-boot-starter-test"
+        testCompile "de.flapdoodle.embed:de.flapdoodle.embed.mongo"
     }
 
     bintray {
@@ -571,9 +587,9 @@ project(":spring-kotlin-coroutine-demo") {
         compile project(":spring-webmvc-kotlin-coroutine")
 
         compile "net.sf.ehcache:ehcache:2.10.3"
-        compile "org.springframework.boot:spring-boot-autoconfigure:$spring_boot_version"
-        compile "org.springframework.boot:spring-boot-starter:$spring_boot_version"
-        compile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
+        compile "org.springframework.boot:spring-boot-autoconfigure"
+        compile "org.springframework.boot:spring-boot-starter"
+        compile "org.springframework.boot:spring-boot-starter-web"
         compile "javax.servlet:javax.servlet-api:3.1.0"
     }
 }

@@ -27,7 +27,7 @@ import org.springframework.context.support.AbstractApplicationContext.APPLICATIO
 
 @Configuration
 @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-internal open class CoroutineEventSupportConfiguraton {
+internal open class CoroutineEventSupportConfiguration {
     @Bean
     open fun coroutineEventListenerFactory(applicationContext: ApplicationContext,
         eventPublisher: CoroutineApplicationEventPublisher) =

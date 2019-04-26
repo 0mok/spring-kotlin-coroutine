@@ -18,9 +18,11 @@ package org.springframework.kotlin.experimental.coroutine.event
 
 import kotlinx.coroutines.delay
 import org.springframework.context.event.EventListener
+import org.springframework.stereotype.Component
 import java.util.Stack
 import java.util.function.Function
 
+@Component
 open class CoroutineListener {
     private val events = Stack<Any>()
     private val testEvents = Stack<Any>()
